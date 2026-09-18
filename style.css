@@ -1452,3 +1452,70 @@ body.dark-mode .progress-ring {
         font-size: 34px;
     }
 }
+/* 📱 MOBILE: ONLY HABIT TABLE SCROLLS */
+@media (max-width: 600px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    main {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+        padding: 18px 12px !important;
+        margin: 0 !important;
+    }
+
+    header {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .welcome-card,
+    .quote-card,
+    .mood-card,
+    .tracker-card,
+    .stats,
+    .progress-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    /* HABIT TABLE ONLY */
+    .table-wrapper {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        box-sizing: border-box;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table-wrapper table {
+        width: max-content;
+        min-width: 850px;
+    }
+
+    /* Everything below stays fixed */
+    .stats {
+        overflow: hidden;
+    }
+
+    .progress-card {
+        overflow: hidden;
+    }
+
+    .weekly-progress {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    #weeklyCards {
+        width: 100%;
+    }
+}
