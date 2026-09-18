@@ -545,45 +545,80 @@ table thead tr:first-child th:nth-child(6) {
 }
 
 .week-card {
-    padding: 18px 10px;
-    border-radius: 18px;
+    padding: 15px 8px;
+    border-radius: 20px;
     text-align: center;
-    font-weight: bold;
+    background: transparent;
+    color: #71354e;
+}
+
+.progress-ring {
+    --progress: 0%;
+
+    width: 95px;
+    height: 95px;
+
+    margin: 0 auto 12px;
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            currentColor var(--progress),
+            #f5dce6 var(--progress)
+        );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+.progress-ring-inner {
+    width: 72px;
+    height: 72px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-ring-inner strong {
+    font-size: 18px;
 }
 
 .week-card h4 {
-    margin-bottom: 8px;
-    font-size: 13px;
-}
-
-.week-card p {
-    font-size: 24px;
     margin: 0;
+    font-size: 13px;
+    letter-spacing: 0.5px;
 }
 
-.week-1 {
-    background: #ffe5ee;
-    color: #c43f69;
+
+/* Different colors for each week */
+
+.week-card.week-1 {
+    color: #d94f7a;
 }
 
-.week-2 {
-    background: #e5f4ff;
-    color: #4d91c4;
+.week-card.week-2 {
+    color: #5b9bd5;
 }
 
-.week-3 {
-    background: #eee7ff;
-    color: #7655b5;
+.week-card.week-3 {
+    color: #8064c2;
 }
 
-.week-4 {
-    background: #e5f8eb;
-    color: #4c9a67;
+.week-card.week-4 {
+    color: #65a878;
 }
 
-.week-5 {
-    background: #fff5d9;
-    color: #b58a25;
+.week-card.week-5 {
+    color: #d4a72c;
 }
 .welcome-card {
     margin-bottom: 28px;
@@ -1116,4 +1151,151 @@ body.dark-mode table thead th {
 body.dark-mode .toast {
     background: #9d5275;
     color: #fff0f6;
+}
+@media (max-width: 600px) {
+
+    main {
+        width: 100%;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    main > h1 {
+        font-size: 30px;
+    }
+
+    .welcome-card {
+        padding: 22px;
+    }
+
+    .welcome-card h2 {
+        font-size: 24px;
+    }
+
+    .quote-card {
+        padding: 16px;
+    }
+
+    .mood-card {
+        padding: 20px 12px;
+    }
+
+    .mood-options {
+        gap: 10px;
+    }
+
+    .mood-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 23px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 20px 10px;
+    }
+
+    .stat-card h3 {
+        font-size: 28px;
+    }
+
+    .progress-card,
+    .weekly-progress {
+        padding: 18px;
+    }
+
+    #weeklyCards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-radius: 16px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-wrapper table {
+    min-width: 900px;
+}
+
+@media (max-width: 600px) {
+
+    .table-wrapper {
+        margin-top: 10px;
+        border-radius: 14px;
+    }
+
+    .table-wrapper table {
+        min-width: 850px;
+    }
+
+    .table-wrapper th,
+    .table-wrapper td {
+        padding: 8px 6px;
+    }
+
+    .table-wrapper .check {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+}
+@media (max-width: 600px) {
+
+    header {
+        padding: 12px 15px;
+    }
+
+    header h2 {
+        font-size: 20px;
+    }
+
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    header button {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+}
+.swipe-hint {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .swipe-hint {
+        display: block;
+        margin: 8px 0 10px;
+        text-align: center;
+        color: #a45b76;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+    }
+
+    body.dark-mode .swipe-hint {
+        color: #d9a9bd;
+    }
+}
+body.dark-mode .progress-ring-inner {
+    background: #302532;
+}
+
+body.dark-mode .progress-ring {
+    background:
+        conic-gradient(
+            currentColor var(--progress),
+            #493442 var(--progress)
+        );
 }

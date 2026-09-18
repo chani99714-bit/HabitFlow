@@ -135,6 +135,14 @@ deleteButton.innerText = "🗑️";
 
 deleteButton.addEventListener("click", function() {
 
+    const confirmDelete = window.confirm(
+        "Are you sure you want to delete this habit?"
+    );
+
+    if (confirmDelete === false) {
+        return;
+    }
+
     habits.splice(index, 1);
 
     localStorage.setItem(
@@ -292,7 +300,6 @@ function calculateProgress() {
 document.getElementById("completed").innerText = completed;
 }
 function calculateWeeklyProgress() {
-
     const boxes = document.querySelectorAll(".check");
     const weeklyCards = document.getElementById("weeklyCards");
 
@@ -319,8 +326,10 @@ function calculateWeeklyProgress() {
 
                 const index = habit * days + day;
 
-                if (boxes[index] &&
-                    boxes[index].classList.contains("done")) {
+                if (
+                    boxes[index] &&
+                    boxes[index].classList.contains("done")
+                ) {
                     completed++;
                 }
             }
@@ -330,13 +339,30 @@ function calculateWeeklyProgress() {
             ? 0
             : Math.round((completed / total) * 100);
 
+        // Create week card
         const card = document.createElement("div");
-
         card.className = "week-card week-" + (week + 1);
 
-        card.innerHTML =
-            "<h4>WEEK " + (week + 1) + "</h4>" +
-            "<p>" + percentage + "%</p>";
+        // Create circular progress
+        const circle = document.createElement("div");
+        circle.className = "progress-ring";
+
+        circle.style.setProperty(
+            "--progress",
+            percentage + "%"
+        );
+
+        circle.innerHTML =
+            "<div class='progress-ring-inner'>" +
+            "<strong>" + percentage + "%</strong>" +
+            "</div>";
+
+        card.appendChild(circle);
+
+        const title = document.createElement("h4");
+        title.innerText = "WEEK " + (week + 1);
+
+        card.appendChild(title);
 
         weeklyCards.appendChild(card);
     }
@@ -504,25 +530,8 @@ function updateStreakBadge() {
 }
 
 updateStreakBadge();
-const themeToggle = document.getElementById("themeToggle");
-
-const savedTheme = localStorage.getItem("theme");
-
-if (savedTheme === "dark") {
-    document.body.classList.add("dark-mode");
-    themeToggle.innerText = "☀️";
-}
-
-themeToggle.addEventListener("click", function () {
+document.getElementById("themeToggle").addEventListener("click", function () {
     document.body.classList.toggle("dark-mode");
-
-    if (document.body.classList.contains("dark-mode")) {
-        localStorage.setItem("theme", "dark");
-        themeToggle.innerText = "☀️";
-    } else {
-        localStorage.setItem("theme", "light");
-        themeToggle.innerText = "🌙";
-    }
 });
 const moodButtons = document.querySelectorAll(".mood-btn");
 
@@ -554,14 +563,3 @@ if (savedMood) {
         }
     });
 }
-const toast = document.getElementById("toast");
-
-moodButtons.forEach(function (button) {
-    button.addEventListener("click", function () {
-        toast.classList.add("show");
-
-        setTimeout(function () {
-            toast.classList.remove("show");
-        }, 2000);
-    });
-});
