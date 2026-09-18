@@ -1299,3 +1299,156 @@ body.dark-mode .progress-ring {
             #493442 var(--progress)
         );
 }
+/* 📱 FULL WIDTH MOBILE DESIGN */
+@media (max-width: 600px) {
+
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    main {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 18px 14px !important;
+        box-sizing: border-box;
+    }
+
+    /* Header */
+    header {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Welcome card */
+    .welcome-card {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 22px 18px;
+    }
+
+    .welcome-card h2 {
+        font-size: 25px;
+    }
+
+    /* Quote */
+    .quote-card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Mood */
+    .mood-card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .mood-options {
+        gap: 9px;
+    }
+
+    .mood-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 21px;
+    }
+
+    /* Main heading */
+    main > h1 {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    main > h1 + p {
+        text-align: center;
+    }
+
+    /* Habit section */
+    .tracker-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+        padding: 16px !important;
+    }
+
+    .tracker-top {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    /* Habit table */
+    .table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        box-sizing: border-box;
+    }
+
+    .table-wrapper table {
+        min-width: 850px;
+    }
+
+    /* Stats */
+    .stats {
+        width: 100%;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 20px 8px;
+    }
+
+    .stat-card span {
+        font-size: 28px;
+    }
+
+    .stat-card h3 {
+        font-size: 26px;
+    }
+
+    /* Weekly Progress */
+    .progress-card {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 14px !important;
+    }
+
+    .weekly-progress {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 16px !important;
+    }
+
+    #weeklyCards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .week-card {
+        padding: 10px 4px;
+    }
+
+    .progress-ring {
+        width: 82px;
+        height: 82px;
+    }
+
+    .progress-ring-inner {
+        width: 62px;
+        height: 62px;
+    }
+
+    .progress-ring-inner strong {
+        font-size: 16px;
+    }
+
+    .week-card h4 {
+        font-size: 11px;
+    }
+
+    /* Monthly Progress */
+    .progress-card h2 {
+        font-size: 34px;
+    }
+}
