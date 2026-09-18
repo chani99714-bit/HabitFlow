@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>My Habit Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+</head>
+<div id="toast" class="toast">Mood saved 💗</div>
+<script>
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("sw.js");
+    }
+</script>
+<body>
+<!-- CUSTOM HABIT POPUP -->
+<div id="habitPopup" class="habit-popup">
+    <div class="popup-box">
+        <div class="popup-icon">🌸</div>
+
+        <h3 id="popupTitle">Add a new habit</h3>
+
+        <p>What habit do you want to track? 💗</p>
+
+        <input type="text" id="habitInput" placeholder="e.g. Reading">
+
+        <div class="popup-buttons">
+            <button id="popupCancel">Cancel</button>
+            <button id="popupOK">Add Habit</button>
+        </div>
+    </div>
+</div>
+    <!-- HEADER -->
+
+    <header>
+
+        <h2>Habit<span>Flow</span> 💗</h2>
+        <button id="themeToggle" class="theme-toggle">🌙</button>
+        <button onclick="resetTracker()">Reset</button>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main>
+<div class="welcome-card">
+
+    <div>
+        <p class="welcome-small">YOUR DAILY SPACE ✨</p>
+        <h2>Small habits,<br>big changes 💗</h2>
+        <p class="welcome-text">
+            Keep going, one little step at a time.
+        </p>
+    </div>
+
+    <div class="welcome-icon">
+        🌸
+    </div>
+
+</div>
+<div class="quote-card">
+    <span class="quote-icon">🌷</span>
+    <div>
+        <p class="quote-title">A little reminder 💗</p>
+        <p class="quote-text">Small steps every day become big changes.</p>
+    </div>
+</div>
+<div class="mood-card">
+    <p class="mood-title">HOW ARE YOU FEELING TODAY? 🌷</p>
+
+    <div class="mood-options">
+        <button class="mood-btn" data-mood="🥰">🥰</button>
+        <button class="mood-btn" data-mood="😊">😊</button>
+        <button class="mood-btn" data-mood="😐">😐</button>
+        <button class="mood-btn" data-mood="😴">😴</button>
+        <button class="mood-btn" data-mood="😭">😭</button>
+        <button class="mood-btn" data-mood="😤">😤</button>
+    </div>
+</div>
+        <h1>Habit Tracker</h1>
+
+        <p>Track your habits every day 💗</p>
+
+
+        <!-- HABIT TRACKER CARD -->
+
+        <div class="tracker-card"></div>
+
+
+            <!-- TOP -->
+
+            <div class="tracker-top">
+
+                <h2>💗 My Habits</h2>
+
+                <div class="controls">
+
+                    <select id="month">
+
+                        <option>January</option>
+                        <option>February</option>
+                        <option>March</option>
+                        <option>April</option>
+                        <option>May</option>
+                        <option>June</option>
+                        <option>July</option>
+                        <option>August</option>
+                        <option>September</option>
+                        <option>October</option>
+                        <option>November</option>
+                        <option>December</option>
+
+                    </select>
+
+
+                    <button class="add-habit" onclick="addHabit()">
+                               + Add Habit
+                        </button>
+                </div>
+
+            </div>
+
+
+            <!-- HABIT TABLE -->
+
+        <table>
+
+                <thead id="tableHead">
+
+                    <tr>
+
+                        <th>Habit</th>
+
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+
+                    </tr>
+
+
+                <tbody id="habitList">
+
+
+                    <!-- STUDY -->
+
+                    <tr>
+
+                        <td>📚 Study</td>
+
+                        <td><button class="check"></button></td>
+                        <td><button class="check"></button></td>
+                        <td><button class="check"></button></td>
+                        <td><button class="check"></button></td>
+                        <td><button class="check"></button></td>
+                        <td><button class="check"></button></td>
+                        <td><button class="check"></button></td>
+
+                    </tr>
+
+
+                    <!-- EXERCISE -->
+
+                    <tr>
+
+                        <td>🏋️ Exercise</td>
+
+                        <td><button class="check"></button></td>
+                        <td><button class="check"></button></td>
+                        <td><button class="check"></button></td>
+                        <td><button class="check"></button></td>
+                        <td><button class="check"></button></td>
+                        <td><button class="check"></button></td>
+                        <td><button class="check"></button></td>
+
+                    </tr>
+
+
+                    <!-- READING -->
+
+                    <tr>
+
+                        <td>📖 Reading</td>
+
+                        <td><button class="check"></button></td>
+                        <td><button class="check"></button></td>
+                        <td><button class="check"></button></td>
+                        <td><button class="check"></button></td>
+                        <td><button class="check"></button></td>
+                        <td><button class="check"></button></td>
+                        <td><button class="check"></button></td>
+
+                    </tr>
+
+
+                </tbody id="habitList">
+
+            </table>
+
+
+            <!-- PROGRESS -->
+<div class="stats">
+
+    <div class="stat-card">
+        <span>🔥</span>
+        <h3 id="streak">0</h3>
+        <p>Day Streak</p>
+        <div id="streakBadge" class="streak-badge">
+    🌱 Keep starting!
+</div>
+    </div>
+
+    <div class="stat-card">
+        <span>✅</span>
+        <h3 id="completed">0</h3>
+        <p>Completed</p>
+    </div>
+
+</div>
+            <div class="progress-card">
+                <div class="weekly-progress">
+    <h3>✨ WEEKLY PROGRESS</h3>
+
+    <div id="weeklyCards"></div>
+</div>
+
+                <p>MONTHLY PROGRESS</p>
+
+                <h2 id="progress">0%</h2>
+                <p id="motivation">🌱 Every journey starts with one small step.</p>
+
+                <div class="progress">
+
+                    <div id="bar"></div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
