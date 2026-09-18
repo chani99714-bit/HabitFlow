@@ -1538,3 +1538,24 @@ body.dark-mode .progress-ring {
         max-width: none !important;
     }
 }
+@media (max-width: 600px) {
+
+    .tracker {
+        overflow: visible !important;
+        width: 100% !important;
+    }
+
+    .table-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        display: block !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    .table-wrapper table {
+        width: 900px !important;
+        min-width: 900px !important;
+    }
+}
